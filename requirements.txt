@@ -1,0 +1,6 @@
+Markdown==2.6.8
+Django==2.0
+djangorestframework
+pygments
+bootstrap-admin
+Pillow
