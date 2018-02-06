@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% load blog_tags %}
+{%  block navigation %}
+        {% for category in categoryList %}
+            	<li class="dropdown">
+       		<a href="#" class="dropdown-toggle" data-toggle = "dropdown">
+       			{{ category }}
+       			<b class="caret"></b>
+       		</a>
+       		<ul class="dropdown-menu">
+                {% for tag in categoryToTagList  %}
+                    {% if tag.category == category %}
+                    <li class="divider"></li>
+       			<li><a href="{% url 'blog_tag' tag.tag %}">{{ tag.tag }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+       			<li></li>
+       		</ul>
+       	</li>
+        {% endfor %}
+{% endblock %}
+
+{% block main %}
+   <div class="article-date">
+      <div class="month">{{ article.date_publish | month_to_upper}}</div>
+      <div class="date">{{ article.date_publish | date:'d' }}</div>
+    </div>
+    <div class="title">
+        <h2 align="center">{{ article.title }}</h2>
+        <div class="article-meta" align="center">
+          <span class="article_category"><a href="" rel="category">{{ article.category.name }}</a></span>
+          <span class="article_time">{{ article.date_publish | date:'Y-m-d' }}</span>
+        </div>
+    </div>
+        <div class="article-body">
+          {{ article.content | safe }}
+        </div>
+ <div class="page">
+      <ul class="pager">
+            {% if neighbor.before %}
+        <li><a href="{% url 'blog_detail' neighbor.before.id %}" >上一篇:{{ neighbor.before.title }}</a></li>
+            {% endif %}
+
+      <button id = "test2" type="button" class="btn btn-primary">点击评论该文章</button>
+        <span>
+            {% if neighbor.next %}
+            <li><a href="{% url 'blog_detail' neighbor.next.id %}">下一篇:{{ neighbor.next.title }}</a></li>
+            {% endif %}
+        </span>
+      </ul>
+ </div>
+
+    {% include 'commentlist.html' %}
+
+    <style>
+        .page ul li {float:left; list-style-type:none;}
+        .page ul span {float:right; }
+        .page ul button{margin: 0 auto}
+        /* 让markdown文章内部的图片自适应大小*/
+        .article-body img{
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <script>
+
+   $('#test2').on('click', function(){
+       //父级评论
+    layer.open({
+      type: 2,
+      title: '评论填写',
+      maxmin: true,
+      shadeClose: true, //点击遮罩关闭层
+      area : ['800px' , '520px'],
+      content: '{% url 'blog_post_comment' article.id 0 %}',
+        offset: 'auto',
+        cancel:function(index,layero)
+{
+    var newurl = '{% url 'blog_commentapi' %}'+'?articleid='+'{{ article.id }}';
+    ajaxGetComemntList(newurl);
+  layer.close(index);
+
+}
+    });
+  });
+
+   function opencomment(parentId) {
+       //回复式子级评论
+       var tagstr ='postcommentpage/{{ article.id }}/'.concat(parentId);
+       layer.open({
+      type: 2,
+      title: '评论填写',
+      maxmin: true,
+      shadeClose: true, //点击遮罩关闭层
+      area : ['320px' , '500px'],
+      content: tagstr,
+           offset: 'auto',
+           cancel:function(index,layero)
+{
+    var newurl = '{% url 'blog_commentapi' %}'+'?articleid='+'{{ article.id }}';
+    ajaxGetComemntList(newurl);
+    console.log('11');
+  layer.close(index);
+}
+    });
+}
+
+function ajaxGetComemntList (url) {
+
+$.get(url, function (data, status) {
+    
+                if(status=='success')
+                {
+                    //先删除所有评论再刷新
+                    var comment_list_obj = document.getElementsByClassName('commentList')[0]
+                    while (comment_list_obj.firstChild)
+                    {
+                        comment_list_obj.removeChild(comment_list_obj.firstChild);
+                    }
+                    build_comment_tree(data);
+                }
+
+
+           });
+}
+    </script>
+{% endblock %}
+
+  {% block right-side %}
+
+      <div class="col-md-4 hidden-xs hidden-sm" >
+        <div id="sidebar">
+            <h2>目录</h2>
+             {{ article.toc|safe }}
+        </div>
+      </div>
+      <script>
+
+        $(document).scroll(function (){
+
+        //固定SideBar
+        if ($(document).scrollTop() > '180') {
+            $('#sidebar').offset({top:$(document).scrollTop()+10});
+        }else if($(document).scrollTop() <= '180') {
+            $('#sidebar').offset({top:500});
+        };
+        $('.toc')[0].id='Mytoc';
+
+    });
+      </script>
+      <style>
+      #Mytoc{
+          border-radius: 15px;
+          border-color: #97CEE9 #6AB7CE #6AB7CE;
+	border-style: solid;
+          background-color: white;
+      }
+      </style>
+  {% endblock %}

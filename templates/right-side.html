@@ -1,0 +1,118 @@
+{% load blog_tags %}
+{% load staticfiles %}
+<aside class="col-md-4" id="myAffix">
+    <div class="search-from">
+        <form class="navbar-form navbar-left" role="search" method="get" id="searchform" action="{% url 'blog_search' %}">
+            <div class="form-group">
+                <input type="text" class="form-control" name="search_text" placeholder="titleSearch">
+            </div>
+            <button type="submit" class="btn btn-default">搜索</button>
+        </form>
+    </div>
+    <div class="moreSelect">
+      <div class="ms-top">
+        <ul class="hd" id="tab">
+          <li class="cur"><a >评论排行</a></li>
+          <li><a >浏览排行</a></li>
+        </ul>
+      </div>
+      <div class="ms-main" id="ms-main">
+        <div style="display: block;" class="bd bd-news" >
+          <ul>
+               {% for object  in article_list_orderby_comment %}
+                   <li><a href="{% url 'blog_detail' object.article.id %}">{{ object.article }}<span style="float: right;margin-right: 10px">评论数:{{ object.comment_count }}</span></a></li>
+              {% endfor %}
+          </ul>
+        </div>
+        <div  class="bd bd-news">
+          <ul>
+            {% for article  in article_click_list %}
+                   <li><a href="{% url 'blog_detail' article.id %}">&lt;{{ article.title }}&gt;<span style="float: right;margin-right: 10px">浏览数:{{ article.click_count }}</span></a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+   </div>
+    <div class="my-recent-posts">
+        <ul class="list-group">
+    <li class="list-group-item active">归档</li>
+            {% for archive in archive_list %}
+                <li   class="list-group-item"><a href="javascript:void(0);" onclick="ajaxgetArchive('{{ archive|slice:"4" }}-{{ archive|slice:"5:7" }}')" >{{ archive }}</a></li>
+            {% endfor %}
+        </ul>
+
+
+    </div>
+    <div id="my-CanvasContainer">
+        <div class="panel-body" style="background-color: #BCE8F1;border-radius: 15px;">
+            <i style="font-size: 20px;">标签云</i>
+        </div>
+        <canvas width="300" height="300" id="myCanvas">
+            <div id="tags">
+                <ul>
+                    {% for tag in categoryToTagList  %}
+                        <li ><a href="javascript:void(0);" onclick="ajaxgetArticleFromTag('{{ tag.tag }}')" >{{ tag.tag }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </canvas>
+    </div>
+    {% include 'friendblogs.html' %}
+    </div>
+
+</aside>
+    <script src="{% static "blog/js/loadArticleList.js" %}" type="text/javascript" ></script>
+    <script type="text/javascript">
+      window.onload = function() {
+        try {
+            var oLi = document.getElementById("tab").getElementsByTagName("li");
+  var oUl = document.getElementById("ms-main").getElementsByTagName("div");
+
+  for(var i = 0; i < oLi.length; i++)
+  {
+    oLi[i].index = i;
+    oLi[i].onmouseover = function ()
+    {
+      for(var n = 0; n < oLi.length; n++) oLi[n].className="";
+      this.className = "cur";
+      for(var n = 0; n < oUl.length; n++) oUl[n].style.display = "none";
+      oUl[this.index].style.display = "block"
+    }
+  }
+          TagCanvas.Start('myCanvas','tags',{
+            textColour: 'blue',
+            outlineColour: '#ff00ff',
+            reverse: true,
+            depth: 0.8,
+            maxSpeed: 0.05
+          });
+        } catch(e) {
+          // something went wrong, hide the canvas container
+          document.getElementById('my-CanvasContainer').style.display = 'none';
+        }
+      };
+function ajaxgetArchive(archiveinfo)
+{
+    $.get('{% url "blog_article_api" %}'+'?archive='+archiveinfo, function (data, status) {
+
+                if(status=='success')
+                {
+                    updatePostList(data,'{% url 'blog_article_api' %}')
+                }
+
+
+           });
+
+}
+function ajaxgetArticleFromTag(tagname) {
+        $.get('{% url 'blog_article_api' %}'+'?tag='+tagname, function (data, status) {
+
+                if(status=='success')
+                {
+                    updatePostList(data,'{% url 'blog_article_api' %}')
+                }
+
+
+           });
+}
+    </script>

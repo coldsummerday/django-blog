@@ -1,0 +1,2 @@
+
+2018-02-01 16:16:46,859 [Thread-7:123145549176832] [blog.views:96] [views:search] [ERROR]- Cannot resolve keyword 'body' into field. Choices are: category, category_id, click_count, comment, content, date_publish, desc, id, is_recommend, tag, title, user, user_id

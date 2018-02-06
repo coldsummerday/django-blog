@@ -1,0 +1,25 @@
+{% load blog_tags %}
+{% load staticfiles %}
+<div class="comment_list">
+    </div>
+     <div class="panel panel-default  mb-20">
+   <div class="tab-category">
+    <a href=""><strong>评论区</strong></a>
+   </div>
+   <div class="panel-body">
+    <div class="panel-body" style="margin: 0 3%;">
+     <div class="mb-20">
+      <ul class="commentList" id="commentId">
+
+  </ul>
+     </div>
+    </div>
+   </div>
+  </div>
+<script src="{% static "blog/js/loadcomment.js" %}" type="text/javascript" ></script>
+<script>
+  $('.comment_list').ready(function () {
+       var newurl = '{% url 'blog_commentapi' %}'+'?articleid='+'{{ article.id }}';
+      ajaxGetComemntList(newurl);
+  })
+</script>

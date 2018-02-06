@@ -1,0 +1,4 @@
+djangorestframework
+pygments
+markdown
+bootstrap-admin

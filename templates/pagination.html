@@ -1,0 +1,13 @@
+ {% if article_list.object_list and article_list.paginator.num_pages > 1 %}
+      <div>
+      <ul class="pager">
+      {% if article_list.has_previous %}
+        <li><a href="?page={{ article_list.previous_page_number }}">上一页</a></li>
+      {% endif %}
+
+      {% if article_list.has_next %}
+        <li><a href="?page={{ article_list.next_page_number }}">下一页</a></li>
+      {% endif %}
+      </ul>
+      </div>
+    {% endif %}

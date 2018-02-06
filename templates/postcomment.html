@@ -1,0 +1,434 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Post comment </title>
+	<!-- Meta tags -->
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	
+	<script type="application/x-javascript">
+		addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); }
+	</script>
+</head>
+<body>
+	<div class="appointment-w3" style="background-image: {% static 'blog/img/b1.jpg' %};">
+		<form action="{% url 'blog_post_commentform' %}" method="post">
+            {% csrf_token %}
+				<h2>填写你的评论:</h2>
+                  <div class="line-w3ls"> </div>
+				<div class="login-w3ls">
+					<div class="icons-agile">
+						<input type="text" name="username" style="width: 300px" placeholder="Name" required="">
+						<div class="clear"></div>
+					</div>
+					<div class="icons-agile ">
+						
+						<input type="email" name="email" style="width: 300px" placeholder="Email" required="">
+
+						<div class="clear"></div>
+					</div>
+					<h2>评论:</h2>
+					<div class="icons-agile">
+						<textarea  class="comment-textarea"  name="comment" required="" ></textarea>
+						<div class="clear"></div>
+					</div>
+                    <input type="hidden" name = "article_id" value="{{ article_id }}"/>
+                    <input type="hidden" name="pid" value="{{ pid }}">
+					<div class="clear"></div>
+					<div class="btnn">
+						<input type="submit" value="Submit">
+					</div>
+				</div>
+		</form>
+        <button type="button"  onclick="deleAllComemnt()"> 刷新页面</button>
+	</div>
+</body>
+<style>
+.comment-textarea{
+	width:400px;height:120px;
+}
+/*--responsive--*/
+@media(max-width:1920px){
+h1.header-w3ls {
+    font-size: 68px;
+}
+.appointment-w3 {
+    width: 32%;
+    margin: 35px auto 65px;
+	    padding: 55px 40px;
+}
+h2 {
+    font-size: 20px;
+    letter-spacing: 2px;
+}	
+.line-w3ls {
+    margin-bottom: 56px;
+}
+.icons-agile:nth-child(1), .icons-agile:nth-child(2), .icons-agile:nth-child(3) {
+    margin-bottom: 3em;
+}
+.copy p {
+    font-size: 18px;
+}
+}
+
+@media(max-width:1680px){
+	h2 {
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+h1.header-w3ls {
+    font-size: 60px;
+}
+.appointment-w3 {
+    width: 35%;
+}
+}
+@media(max-width:1600px){
+h1.header-w3ls {
+    font-size: 50px;
+}	
+.appointment-w3 {
+    width: 30%;
+	margin: 30px auto 40px; 
+	padding: 30px 40px;
+}
+h2 {
+    font-size: 16px;
+}
+.line-w3ls {
+    margin-bottom: 48px;
+}
+.icons-agile:nth-child(1), .icons-agile:nth-child(2), .icons-agile:nth-child(3) {
+    margin-bottom: 2em;
+}
+.copy p {
+    font-size: 16px;
+}
+}
+@media(max-width:1440px){
+.appointment-w3 {
+    width: 34%;
+}	
+}
+@media(max-width:1366px){
+.appointment-w3 {
+    width: 39%;
+}	
+}
+@media(max-width:1280px){
+.appointment-w3 {
+    width: 42%;
+}	
+}
+@media(max-width:1080px){
+	.appointment-w3 {
+    width: 46%;
+}
+}
+@media(max-width:1050px){
+.appointment-w3 {
+    width: 48%;
+}	
+}
+@media(max-width:1024px){
+.appointment-w3 {
+    width: 43%;
+	    padding: 20px 40px;
+		margin: 20px auto 20px; 
+}	
+h1.header-w3ls {
+    padding-top: 47px;
+    font-size: 44px;
+}
+.line-w3ls {
+    margin-bottom: 30px;
+}
+.icons-agile:nth-child(1), .icons-agile:nth-child(2), .icons-agile:nth-child(3) {
+    margin-bottom: 1.5em;
+}	
+h2 {
+    padding-bottom: 16px;
+}
+input[type="submit"] {
+    margin-top: 25px;
+	padding: 9px 10px;
+}
+.icons-agile span {
+    height: 39px;
+    line-height: 36px;
+}
+
+ input[type=email], input[type=text] {
+    padding: 8px 12px;
+}
+}
+@media(max-width:991px){
+.appointment-w3 {
+    width: 45%;
+}
+h1.header-w3ls {
+    padding-top: 17px;
+}
+}
+@media(max-width:900px){
+.appointment-w3 {
+    width: 51%;
+}
+}
+@media(max-width:800px){
+.appointment-w3 {
+    width: 56%;
+}
+h1.header-w3ls {
+    letter-spacing: 9px;
+}	
+}
+@media(max-width:768px){
+	h1.header-w3ls {
+    padding-top: 85px;
+}
+.appointment-w3 {
+    width: 58%;
+}	
+.appointment-w3 {
+    width: 74%;
+    padding: 54px 43px;
+    margin: 47px auto 42px;
+}
+.icons-agile:nth-child(1), .icons-agile:nth-child(2), .icons-agile:nth-child(3) {
+    margin-bottom: 3em;
+}
+.line-w3ls {
+    margin-bottom: 63px;
+}
+input[type="submit"] {
+    margin-top: 41px;
+}
+}
+@media(max-width:767px){
+	.line-w3ls {
+    margin-bottom: 29px;
+}
+	.appointment-w3 {
+    width: 59%;
+	padding: 20px 40px;
+    margin: 20px auto 20px;
+}
+h1.header-w3ls {
+    letter-spacing: 8px;
+}	
+h1.header-w3ls {
+    padding-top: 18px;
+}
+.icons-agile:nth-child(1), .icons-agile:nth-child(2), .icons-agile:nth-child(3) {
+    margin-bottom: 1.5em;
+}
+input[type="submit"] {
+    margin-top: 25px;
+}
+}
+@media(max-width:736px){
+.appointment-w3 {
+    width: 62%;
+}
+h1.header-w3ls {
+    font-size: 43px;
+    letter-spacing: 7px;
+}	
+}
+@media(max-width:667px){
+	.appointment-w3 {
+    width: 68%;
+}
+h1.header-w3ls {
+    letter-spacing: 6px;
+}
+.copy p {
+   letter-spacing:1px;
+}
+}
+@media(max-width:640px){
+.appointment-w3 {
+    width: 71%;
+}
+.copy p {
+    font-size: 15px;
+}
+	
+h1.header-w3ls {
+    padding-top: 22px;
+    font-size: 41px;
+}
+}
+@media(max-width:600px){
+.copy {
+    padding: 0px 16px 30px;
+    line-height: 20px;
+}	
+.appointment-w3 {
+    width: 75%;
+}
+.icons-agile:nth-child(1), .icons-agile:nth-child(2), .icons-agile:nth-child(3) {
+    margin-bottom: 1.3em;
+}
+.copy {
+    padding: 0px 16px 30px;
+    line-height: 23px;
+}
+}
+@media(max-width:568px){
+	.appointment-w3 {
+    width: 80%;
+}
+h1.header-w3ls {
+    letter-spacing: 4px;
+}
+}
+@media(max-width:480px){
+.appointment-w3 {
+    padding: 20px 25px;	
+}
+h1.header-w3ls {
+    letter-spacing: 2px;
+	    font-size: 38px;
+}
+}
+@media(max-width:440px){
+h1.header-w3ls {
+    font-size: 33px;
+}	
+}
+@media(max-width:414px){
+.copy {
+    line-height: 30px;
+}	
+.icons-agile span {
+    -webkit-flex-basis: 15%;
+    flex-basis: 15%;	
+}
+h1.header-w3ls {
+    padding-top: 35px;
+}
+.appointment-w3 {
+    margin: 30px auto 20px;
+}
+}
+@media(max-width:384px){
+
+h2 {
+    font-size: 14px;
+}
+}
+@media(max-width:375px){
+.appointment-w3 {
+    padding: 20px 19px;
+	width: 82%;
+}	
+}
+@media(max-width:320px){
+h1.header-w3ls {
+    font-size: 31px;
+}	
+h2 {
+    line-height: 25px;
+}
+.appointment-w3 {
+    padding: 24px 19px;
+}
+}
+/*--//responsive--*/
+input[type="submit"] {
+    text-transform: uppercase;
+       background: #fff;
+    color: #000000;
+    padding:5px 5px;
+    border: none;
+    font-size: 1em;
+    outline: none;
+    width: 30%;
+    letter-spacing: 1px;
+    font-weight: 300;
+    margin-top: 35px;
+    cursor: pointer;
+    -webkit-transition: 0.5s all;
+    -moz-transition: 0.5s all;
+    -o-transition: 0.5s all;
+    -ms-transition: 0.5s all;
+}
+	input[type="submit"]:hover {
+    color: #fff;
+    background: #000;
+}
+.btnn{
+	display:block;
+   margin:0;
+	text-align:center;
+	position:relative;
+    }
+/*-- //Reset-Code --*/
+  .appointment-w3 {
+  	
+    background-color: rgba(0, 0, 0, 0.43);
+    padding: 31px 40px;
+    box-shadow: 2px 3px rgba(0, 0, 0, 0.42);
+}
+h1.header-w3ls {
+    text-align: center;
+    font-size: 50px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 11px;
+    text-shadow: 2px 3px rgba(0, 0, 0, 0.42);
+	 padding-top: 45px;
+}	
+
+ h2{
+    font-size: 16px;
+    color: black;
+    padding-bottom: 24px;
+    line-height: 27px;
+    letter-spacing: 1px;
+	text-align: center;
+}
+.line-w3ls{ background: white;
+    width: 100%;
+    height: 2px;
+    margin-bottom: 48px;}
+.login-w3ls{display:block;
+   
+	   }	   
+ 
+  .icons-agile{display: flex;
+        display: -webkit-flex;
+ }
+  .icons-agile span {
+	-webkit-flex-basis:10%;
+	flex-basis:10%;
+    height: 45px;
+    display: block;
+    background: #fff;
+    text-align: center;
+    line-height: 45px;
+    color: #000;
+}
+h1,h2,h3,h4,h5,h6{
+	margin:0;	
+	padding:0;
+font-family: 'Source Sans Pro', sans-serif;
+	letter-spacing:1px;
+}	
+input[type="email"],input[type="text"],input[type=password],
+input[type="button"],input[type="submit"],textarea{
+font-family: 'Source Sans Pro', sans-serif;
+	transition:0.5s all;
+	-webkit-transition:0.5s all;
+	-moz-transition:0.5s all;
+	-o-transition:0.5s all;
+	-ms-transition:0.5s all;
+}
+</style>
+</html>

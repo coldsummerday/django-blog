@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block main %}
+
+    {% for article in article_list %}
+        <div class="blog-post">
+                    <h2 align="center">{{ article.title }}</h2>
+                    <h4 align="center">{{ article.date_publish |date:"Y-m-d"}} </h4>
+                    <p>
+                        {{ article.desc }}
+                    </p>
+                    <a href="{% url 'blog_detail' article.id %}" class="btn btn-default btn-lg ">Read More <i class="fa fa-angle-right"></i></a>
+                    <a>阅读数:{{ article.comment_set.all.count }}</a>
+                    <a>浏览量:{{ article.click_count }}</a>
+    </div>
+    {% empty %}
+        <div class="no-post">暂时还没有发布的文章！</div>
+    {% endfor %}
+    {% include 'pagination.html' %}
+{% endblock %}
+{%  block navigation %}
+        {% for category in categoryList %}
+            	<li class="dropdown">
+       		<a href="#" class="dropdown-toggle" data-toggle = "dropdown">
+       			{{ category }}
+       			<b class="caret"></b>
+       		</a>
+       		<ul class="dropdown-menu">
+                {% for tag in categoryToTagList  %}
+                    {% if tag.category == category %}
+                    <li class="divider"></li>
+       			<li><a href="#">{{ tag.tag }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+       			<li></li>
+       		</ul>
+       	</li>
+        {% endfor %}
+{% endblock %}
+
+{% block right-side %}
+    {% include 'right-side.html' %}
+{% endblock %}
