@@ -211,13 +211,14 @@ font-weight: 900;
 }
 
 .title {
-	height: 48px;
+	height: auto;
+	background-color:white;
 }
 
 .title h2 {
 	line-height: 120%;
 	color: #1e0010;
-	font-size: 50px;
+	font-size: 25px;
 	font-style:italic;
 	font-weight:bold
 }

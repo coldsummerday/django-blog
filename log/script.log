@@ -3888,3 +3888,5 @@ rest_framework
 static
 staticfiles
 tz
+2018-02-06 04:05:20,559 [Thread-189:123145452822528] [django.request:93] [base:get_response] [WARNING]- Not Found: /article/20
+2018-02-06 04:07:03,785 [Thread-190:123145452822528] [django.request:93] [base:get_response] [WARNING]- Not Found: /article/20

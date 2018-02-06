@@ -8,7 +8,7 @@ function updatePostList(data,apiurl){
     }
 	var urlinfo = parseQueryString(data.urlinfo)
 	var articleArr = data.data;
-	var  articleUrl = 'article/'
+	var  articleUrl = 'articles/'
 	for(var id in articleArr)
 	{
 		var article = articleArr[id];

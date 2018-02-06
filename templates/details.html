@@ -22,11 +22,12 @@
 {% endblock %}
 
 {% block main %}
-   <div class="article-date">
+
+    <div class="title">
+       <div class="article-date">
       <div class="month">{{ article.date_publish | month_to_upper}}</div>
       <div class="date">{{ article.date_publish | date:'d' }}</div>
     </div>
-    <div class="title">
         <h2 align="center">{{ article.title }}</h2>
         <div class="article-meta" align="center">
           <span class="article_category"><a href="" rel="category">{{ article.category.name }}</a></span>
@@ -42,7 +43,7 @@
         <li><a href="{% url 'blog_detail' neighbor.before.id %}" >上一篇:{{ neighbor.before.title }}</a></li>
             {% endif %}
 
-      <button id = "test2" type="button" class="btn btn-primary">点击评论该文章</button>
+
         <span>
             {% if neighbor.next %}
             <li><a href="{% url 'blog_detail' neighbor.next.id %}">下一篇:{{ neighbor.next.title }}</a></li>
@@ -50,6 +51,9 @@
         </span>
       </ul>
  </div>
+    <div style="text-align: center;margin: 1%">
+    <button id = "test2" type="button" class="btn btn-primary">点击评论该文章</button>
+    </div>
 
     {% include 'commentlist.html' %}
 
@@ -73,8 +77,8 @@
       title: '评论填写',
       maxmin: true,
       shadeClose: true, //点击遮罩关闭层
-      area : ['800px' , '520px'],
       content: '{% url 'blog_post_comment' article.id 0 %}',
+              area : [ , '600px'],
         offset: 'auto',
         cancel:function(index,layero)
 {
@@ -94,7 +98,7 @@
       title: '评论填写',
       maxmin: true,
       shadeClose: true, //点击遮罩关闭层
-      area : ['320px' , '500px'],
+      area : [ , '600px'],
       content: tagstr,
            offset: 'auto',
            cancel:function(index,layero)
