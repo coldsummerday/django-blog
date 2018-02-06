@@ -4,3 +4,4 @@ djangorestframework
 pygments
 bootstrap-admin
 Pillow
+uwsgi
