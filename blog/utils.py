@@ -3,7 +3,7 @@ import time
 from .models import *
 #利用django信号,使得model改变的时候刷新cache
 from django.core.signals import request_finished
-from django.db.models.signals import pre_save
+from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 
 import  logging
@@ -27,7 +27,8 @@ class RedisCache():
             else:
                 data = self.set_cache()
         except Exception as e:
-            # 使用缓存出错，可能是没开启redis
+            Logger.log(e)
+            # 使用缓存出错，可能是没开启redis,重新获取所需data
             data = self.get_data_method(*self.args, **self.kw)
         finally:
             return data
@@ -77,13 +78,13 @@ def get_caches():
     return caches
 caches = get_caches()
 
-@receiver(pre_save,sender=Tag)
+@receiver([post_save,post_delete],sender=Tag)
 def tagUpdate(sender,**kwargs):
     global caches
     print('更新tagcache')
     caches['categoryToTagList'].set_cache()
 
-@receiver(pre_save,sender=Category)
+@receiver([post_save,post_delete],sender=Category)
 def categoryUpdate(sender,**kwargs):
     global caches
     print('更新catcache')
