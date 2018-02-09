@@ -14,6 +14,8 @@ from blog.serializers import *
 from .models import *
 from .forms import *
 import markdown
+from .utils import caches
+
 Logger = logging.getLogger('blog.views')
 
 
@@ -56,7 +58,8 @@ def page(request,article_list):
 
 def baseinfo():
     #除了具体的文章列表,其他 每个页面都要加载的信息
-    categoryList,categoryToTagList = getTags()
+    categoryList = caches['categoryList'].get_cache()
+    categoryToTagList = caches['categoryToTagList'].get_cache()
     archive_list = Article.objects.distinct_date()
     try:
         #不能用reverse方法,会生成一个None值
@@ -77,7 +80,6 @@ def baseinfo():
                 'article_list_orderby_comment':article_list_orderby_comment,\
                 'archive_list':archive_list,\
                 'article_click_list':article_click_queryset}
-
     return  infoDir
 def index(request):
     #主页

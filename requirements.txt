@@ -4,4 +4,5 @@ djangorestframework
 pygments
 bootstrap-admin
 Pillow
+django-redis
 uwsgi
