@@ -60,19 +60,11 @@ def baseinfo():
     #除了具体的文章列表,其他 每个页面都要加载的信息
     categoryList = caches['categoryList'].get_cache()
     categoryToTagList = caches['categoryToTagList'].get_cache()
-    archive_list = Article.objects.distinct_date()
+    article_list_orderby_comment = caches['article_list_orderby_comment'].get_cache()
+    archive_list = caches['archive_list'].get_cache()
     try:
-        #不能用reverse方法,会生成一个None值
-        comment_count_queryset = Comment.objects.values('article').annotate(comment_count=Count('article'))
-        article_list_orderby_comment =[{'article':Article.objects.get(pk=comment['article']),\
-                                    'comment_count':comment['comment_count']} \
-                                   for comment in comment_count_queryset][::-1]
-        if len(article_list_orderby_comment)>6:
-            article_list_orderby_comment = article_list_orderby_comment[:5]
-
         article_click_queryset = Article.objects.all().order_by('click_count')[::-1][:5]
         article_click_queryset = [article for article in article_click_queryset if article.click_count!=0]
-
     except Exception as e:
         Logger.error(e)
     infoDir = {'categoryList':categoryList,\

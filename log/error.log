@@ -1,2 +1,4 @@
 
 2018-02-01 16:16:46,859 [Thread-7:123145549176832] [blog.views:96] [views:search] [ERROR]- Cannot resolve keyword 'body' into field. Choices are: category, category_id, click_count, comment, content, date_publish, desc, id, is_recommend, tag, title, user, user_id
+2018-02-11 20:28:25,863 [Thread-3:123145374318592] [blog.views:144] [views:details] [ERROR]- 'function' object is not iterable
+2018-02-11 20:31:16,876 [Thread-3:123145542176768] [blog.views:145] [views:details] [ERROR]- 'RedisCache' object has no attribute 'update'

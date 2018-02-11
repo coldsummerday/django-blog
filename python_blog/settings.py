@@ -25,7 +25,7 @@ SECRET_KEY = '#zvhovll6*7u(e1_k#&ye$bx&9ztna(0zyabvoe0ix)0xr*(-a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*.haibin.online','localhost']
+ALLOWED_HOSTS = ['*.haibin.online','localhost','127.0.0.1','47.94.201.191']
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'blog',
     'pygments',
     'rest_framework',
+    'django_crontab',
 ]
 
 MIDDLEWARE = [
@@ -126,6 +127,10 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
 
+#将 django-redis 作为 session 储存后端不用安装任何额外的 backend
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
 
 #redis缓存机制:
 CACHES = {
@@ -134,11 +139,17 @@ CACHES = {
         'LOCATION': '127.0.0.1:6379',
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            #设置最大连接数
+            "CONNECTION_POOL_KWARGS": {"max_connections": 100},
         },
     },
 }
 
+##定时任务,每隔一段时间将cache中的浏览数 保存回数据库
+CRONJOBS = (
+    ('*/1 * * * *', 'blog.utils.updateClickTosql'),
 
+)
 ##每页的文章数
 EACH_PAGE =  5
 

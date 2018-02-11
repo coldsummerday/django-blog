@@ -3890,3 +3890,1071 @@ staticfiles
 tz
 2018-02-06 04:05:20,559 [Thread-189:123145452822528] [django.request:93] [base:get_response] [WARNING]- Not Found: /article/20
 2018-02-06 04:07:03,785 [Thread-190:123145452822528] [django.request:93] [base:get_response] [WARNING]- Not Found: /article/20
+2018-02-10 11:49:17,781 [Thread-6:123145448460288] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,830 [Thread-16:123145501011968] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,831 [Thread-9:123145464225792] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,832 [Thread-17:123145506267136] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,846 [Thread-5:123145443205120] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,856 [Thread-4:123145437949952] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,889 [Thread-22:123145532542976] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,961 [Thread-7:123145453715456] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,971 [Thread-1:123145427439616] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,972 [Thread-18:123145511522304] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,973 [Thread-10:123145469480960] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,973 [Thread-11:123145474736128] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,973 [Thread-19:123145516777472] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,981 [Thread-13:123145485246464] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,983 [Thread-14:123145490501632] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,983 [Thread-20:123145522032640] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,983 [Thread-21:123145527287808] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,992 [Thread-12:123145479991296] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,992 [Thread-3:123145432694784] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,992 [Thread-15:123145495756800] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:49:17,995 [Thread-8:123145458970624] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 11:51:03,040 [Thread-1:123145426112512] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 313, in decode
+    value = int(value)
+ValueError: invalid literal for int() with base 10: b'\x80\x04\x95\xd2\x01\x00\x00\x00\x00\x00\x00]\x94(\x8c\nblog.utils\x94\x8c\rcategoryToTag\x94\x93\x94)\x81\x94}\x94(\x8c\x08category\x94\x8c\x0cpython\xe5\xa4\xa7\xe6\xb3\x95\x94\x8c\x03tag\x94\x8c\
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 26, in get_cache
+    data = cache.get(self.key)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 82, in get
+    client=client)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 208, in get
+    return self.decode(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 320, in decode
+    value = self._serializer.loads(value)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/serializers/pickle.py", line 36, in loads
+    return pickle.loads(force_bytes(value))
+ModuleNotFoundError: No module named 'blog.utils'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 62, in baseinfo
+    categoryToTagList = caches['categoryToTagList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/cacheutils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 13:36:21,586 [Thread-1:123145410252800] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 125, in has_key
+    return self.client.has_key(*args, **kwargs)
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 473, in has_key
+    raise ConnectionInterrupted(connection=client, parent=e)
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 61 connecting to None:6379. Connection refused.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/utils.py", line 25, in get_cache
+    if cache.has_key(self.key):
+  File "/usr/local/lib/python3.6/site-packages/django_redis/cache.py", line 40, in _decorator
+    raise e.parent
+  File "/usr/local/lib/python3.6/site-packages/django_redis/client/default.py", line 471, in has_key
+    return client.exists(key)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 951, in exists
+    return self.execute_command('EXISTS', name)
+  File "/usr/local/lib/python3.6/site-packages/redis/client.py", line 673, in execute_command
+    connection.send_command(*args)
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/usr/local/lib/python3.6/site-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 61 connecting to None:6379. Connection refused.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/zhouhaibin/github/django-blog/blog/utils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.6/site-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 88, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "/Users/zhouhaibin/github/django-blog/blog/views.py", line 61, in baseinfo
+    categoryList = caches['categoryList'].get_cache()
+  File "/Users/zhouhaibin/github/django-blog/blog/utils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-10 13:41:51,520 [Thread-15:123145460477952] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-02-10 13:42:16,382 [Thread-22:123145460477952] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
