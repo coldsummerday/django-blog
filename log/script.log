@@ -4958,3 +4958,104 @@ Traceback (most recent call last):
 UnboundLocalError: local variable 'data' referenced before assignment
 2018-02-10 13:41:51,520 [Thread-15:123145460477952] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
 2018-02-10 13:42:16,382 [Thread-22:123145460477952] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-02-13 11:57:15,236 [Thread-3:140585525434112] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/cache/__init__.py", line 51, in _create_cache
+    backend_cls = import_string(backend)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/module_loading.py", line 17, in import_string
+    module = import_module(module_path)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 944, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 956, in _find_and_load_unlocked
+ImportError: No module named 'django_redis'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/deprecation.py", line 93, in __call__
+    response = self.process_request(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/contrib/sessions/middleware.py", line 20, in process_request
+    request.session = self.SessionStore(session_key)
+  File "/usr/local/lib/python3.5/dist-packages/django/contrib/sessions/backends/cache.py", line 17, in __init__
+    self._cache = caches[settings.SESSION_CACHE_ALIAS]
+  File "/usr/local/lib/python3.5/dist-packages/django/core/cache/__init__.py", line 80, in __getitem__
+    cache = _create_cache(alias)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/cache/__init__.py", line 54, in _create_cache
+    "Could not find backend '%s': %s" % (backend, e))
+django.core.cache.backends.base.InvalidCacheBackendError: Could not find backend 'django_redis.cache.RedisCache': No module named 'django_redis'
+2018-02-13 20:55:18,518 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/layer/layer.js
+2018-02-13 20:55:18,541 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/css/font-awesome.css
+2018-02-13 20:55:18,545 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/css/style.css
+2018-02-13 20:55:18,549 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/css/monokai.css
+2018-02-13 20:55:18,553 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/js/love.js
+2018-02-13 20:55:18,681 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/css/style.css
+2018-02-13 20:55:18,686 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/css/font-awesome.css
+2018-02-13 20:55:18,690 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/css/monokai.css
+2018-02-13 20:55:18,694 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/js/loadArticleList.js
+2018-02-13 20:55:18,830 [uWSGIWorker1Core0:140396195424000] [django.request:93] [base:get_response] [WARNING]- Not Found: /static/blog/img/me.jpg
+2018-02-13 21:19:40,315 [uWSGIWorker1Core0:140533542024960] [django.request:118] [exception:handle_uncaught_exception] [ERROR]- Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django_redis/cache.py", line 33, in _decorator
+    return method(self, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django_redis/cache.py", line 125, in has_key
+    return self.client.has_key(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django_redis/client/default.py", line 473, in has_key
+    raise ConnectionInterrupted(connection=client, parent=e)
+django_redis.exceptions.ConnectionInterrupted: Redis ConnectionError: Error 99 connecting to None:6379. Cannot assign requested address.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./blog/utils.py", line 25, in get_cache
+    if cache.has_key(self.key):
+  File "/usr/local/lib/python3.5/dist-packages/django_redis/cache.py", line 40, in _decorator
+    raise e.parent
+  File "/usr/local/lib/python3.5/dist-packages/django_redis/client/default.py", line 471, in has_key
+    return client.exists(key)
+  File "/usr/local/lib/python3.5/dist-packages/redis/client.py", line 951, in exists
+    return self.execute_command('EXISTS', name)
+  File "/usr/local/lib/python3.5/dist-packages/redis/client.py", line 673, in execute_command
+    connection.send_command(*args)
+  File "/usr/local/lib/python3.5/dist-packages/redis/connection.py", line 610, in send_command
+    self.send_packed_command(self.pack_command(*args))
+  File "/usr/local/lib/python3.5/dist-packages/redis/connection.py", line 585, in send_packed_command
+    self.connect()
+  File "/usr/local/lib/python3.5/dist-packages/redis/connection.py", line 489, in connect
+    raise ConnectionError(self._error_message(e))
+redis.exceptions.ConnectionError: Error 99 connecting to None:6379. Cannot assign requested address.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "./blog/utils.py", line 30, in get_cache
+    Logger.log(e)
+TypeError: log() missing 1 required positional argument: 'msg'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/exception.py", line 35, in inner
+    response = get_response(request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 128, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 126, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "./blog/views.py", line 85, in index
+    return render(request,'home.html',dict({'article_list':article_list},**baseinfo()))
+  File "./blog/views.py", line 61, in baseinfo
+    categoryList = caches['categoryList'].get_cache()
+  File "./blog/utils.py", line 34, in get_cache
+    return data
+UnboundLocalError: local variable 'data' referenced before assignment
+2018-02-13 22:03:15,157 [uWSGIWorker10Core0:139961225606912] [django.request:93] [base:get_response] [WARNING]- Not Found: /ccvv
+2018-02-13 22:09:26,081 [uWSGIWorker10Core0:139961225606912] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-02-13 22:10:08,635 [uWSGIWorker10Core0:139961225606912] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
+2018-02-13 22:11:02,748 [uWSGIWorker9Core0:139961225606912] [django.request:93] [base:get_response] [WARNING]- Not Found: /favicon.ico
